@@ -15,13 +15,13 @@ tests = [ \
 ('00350', "./00350/00350-sbml-l2v4.xml"),
 ('00400', "./00400/00400-sbml-l2v4.xml"),
 ('00450', "./00450/00450-sbml-l2v4.xml"),
-('00500' "./00500/00500-sbml-l2v4.xml")]
+('00500', "./00500/00500-sbml-l2v4.xml")]
 
 start = 0;
 end = 50;
 steps = 50;
 
-csvwriter = csv.writer(sys.stdout, delimeter=' ', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+csvwriter = csv.writer(sys.stdout, delimiter=' ', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
 def timeit(d, fname):
     startTime = time.time()
@@ -35,7 +35,7 @@ def timeit(d, fname):
 
 for n in range(3):
   csvwriter.writerow(['Trial {}'.format(n+1)])
-  csvwriter.writerow(['Num', 'Load_time', 'Run_time', 'Total_time'])
+  csvwriter.writerow(['Name', 'Load_time', 'Run_time', 'Total_time'])
   for t in tests:
       timeit(*t)
 
