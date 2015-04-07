@@ -21,7 +21,7 @@ start = 0;
 end = 50;
 steps = 50;
 
-csvwriter = csv.writer(sys.stdout, delimiter=' ', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+csvwriter = csv.writer(sys.stdout, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
 def timeit(d, fname):
     startTime = time.time()
