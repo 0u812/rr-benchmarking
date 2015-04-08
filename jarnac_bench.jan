@@ -30,6 +30,10 @@ begin
       t_load = timer 
       p = network(path)
       t_load = timer - t_load
+      
+      // set tolerances
+      p.sim.rtol = 0.0001
+      p.sim.atol = 1.000000E-007 
     
       // simulate model
       //println "simulate model"
