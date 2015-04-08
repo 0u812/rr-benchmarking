@@ -11,6 +11,9 @@ import time
 import csv
 from sys import stderr, stdout
 
+Config.setValue(Config.SIMULATEOPTIONS_ABSOLUTE, 1.000000e-007)
+Config.setValue(Config.SIMULATEOPTIONS_RELATIVE, 0.0001)
+
 tests = [ \
   ('jean_marie', "./jean_marie/Jean_Marie_AMPA16_RobHow_v6.xml"),
   ('jana_wolf', "./jana_wolf/Jana_WolfGlycolysis.xml"),
@@ -33,7 +36,7 @@ tests = [ \
 
 start = 0;
 end = 50;
-steps = 50;
+steps = 500;
 
 csvwriter = csv.writer(stdout, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
