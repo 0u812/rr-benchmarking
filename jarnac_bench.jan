@@ -38,7 +38,7 @@ begin
       // simulate model
       //println "simulate model"
       t_sim = timer
-      m = p.sim.eval (0, 50, 50);
+      m = p.sim.eval (0, 50, 500);
       t_sim = timer - t_sim
     
       t_total = t_load + t_sim
