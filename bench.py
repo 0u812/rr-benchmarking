@@ -36,7 +36,7 @@ tests = [ \
 
 start = 0;
 end = 50;
-steps = 500;
+steps = 50;
 
 csvwriter = csv.writer(stdout, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
