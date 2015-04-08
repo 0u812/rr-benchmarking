@@ -1,6 +1,6 @@
 // Benchmark names and paths (rel to directory this script resides in)
 names = [ "jean_marie", 
-          "jana_wolf_fixed", 
+          "jana_wolf_fixed2", 
           "biomod09", 
           "biomod14", 
           "biomod22", 
@@ -19,7 +19,7 @@ names = [ "jean_marie",
           "00500" ]
 
 paths = ["jean_marie\\Jean_Marie_AMPA16_RobHow_v6.xml", 
-         "jana_wolf\\Jana_WolfGlycolysis_fixed.xml", 
+         "jana_wolf\\Jana_WolfGlycolysis_fixed2.xml", 
          "biomod09\\BIOMD0000000009.xml", 
          "biomod14\\BIOMD0000000014.xml", 
          "biomod22\\BIOMD0000000022.xml", 
@@ -57,11 +57,13 @@ begin
       bad_model = true
     if name == "biomod09" then
       bad_model = true
+    if name == "biomod22" then
+      bad_model = true
     
     if bad_model == false then
     begin  
       // import SBML model
-      //println "load model ", path
+      println "load model ", path
       t_load = timer 
       p = network(path)
       t_load = timer - t_load
@@ -69,9 +71,10 @@ begin
       // set tolerances
       p.sim.rtol = 0.0001
       p.sim.atol = 1.000000E-007 
+      p.sim.maxOrder = 5
     
       // simulate model
-      //println "simulate model"
+      println "simulate model"
       t_sim = timer
       m = p.sim.eval (0, 50, 50);
       t_sim = timer - t_sim

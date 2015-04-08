@@ -54,3 +54,5 @@ p.J8_J8_k1 = 375;
 p.J8_J8_k2 = 375;
 p.J9_J9_k = 28;
 p.J10_J10_k = 80; 
+
+p.save("Jana_WolfGlycolysis_saved.dat")
