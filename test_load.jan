@@ -1,0 +1,7 @@
+p = network("00001\\00001-sbml-l2v4.xml")
+
+t_sim = timer
+m = p.sim.eval (0, 50, 50);
+t_sim = timer - t_sim
+
+println "t_sim ", t_sim
