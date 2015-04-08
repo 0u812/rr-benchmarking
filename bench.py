@@ -1,3 +1,10 @@
+#!/usr/bin/env python
+
+# Roadrunner benchmarking script, Apr 2015
+# Authors: Andy Somogyi, J Kyle Medley
+# Language: Python 2.7.9
+# Usage: cd <this_dir> && python bench.py >../results.csv
+
 from __future__ import print_function
 from roadrunner import *
 import time
