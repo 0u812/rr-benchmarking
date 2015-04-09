@@ -1,0 +1,13 @@
+Jarnac Version 3.33b Interactive Mode [Build Date: 27 February 2014, 21:11:26] 
+Trial 1 
+Name,Load_time,Run_time,Total_time 
+00450,    3.453,  765.735,  769.188 
+00500,    4.203,  1037.19,  1041.39 
+Trial 2 
+Name,Load_time,Run_time,Total_time 
+00450,    3.469,  765.422,  768.891 
+00500,    4.297,  1032.19,  1036.48 
+Trial 3 
+Name,Load_time,Run_time,Total_time 
+00450,    3.422,    764.5,  767.922 
+00500,    4.266,  1032.69,  1036.95
