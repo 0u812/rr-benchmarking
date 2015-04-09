@@ -1,6 +1,5 @@
 ## Benchmarking procedure (JKM)
 
-### Roadrunner:
 
 The bench.py script is a modified version of Andy's code
 (changes include additional models and csv output),
@@ -17,4 +16,9 @@ relative: 0.0001
 ```
 
 In both roadrunner and Jarnac tests, the number of steps was set
-to 500.
+to 50.
+
+The Jarnac benchmarking script is jarnac_bench.jan, and is run in the Jarnac UI.
+The jean_marie, biomod22, and biomod09 models caused errors in Jarnac and were excluded from benchmarking.
+The biomod09 model also resulted in errors in roadrunner.
+Memory exhaustion prevented Jarnac from completing three trials of the 450/500 Brusselator models.
