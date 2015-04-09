@@ -24,5 +24,5 @@ The Jarnac benchmarking script is jarnac_bench.jan, and is run in the Jarnac UI.
 
 *The jean_marie, biomod22, and biomod09 models caused errors in Jarnac and were excluded from benchmarking.
 *The biomod09 model also resulted in errors in roadrunner.
-*Memory exhaustion prevented Jarnac from completing three trials of the 450/500 Brusselator models.
+*Memory exhaustion prevented Jarnac from completing three trials of the 450/500 Brusselator models. These were completed on a separate run of just the 450/500 Brusselator models.
 * The timer resolution in Jarnac is milliseconds
