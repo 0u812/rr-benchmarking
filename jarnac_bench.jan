@@ -63,7 +63,7 @@ begin
     if bad_model == false then
     begin  
       // import SBML model
-      println "load model ", path
+      //println "load model ", path
       t_load = timer 
       p = network(path)
       t_load = timer - t_load
@@ -74,7 +74,7 @@ begin
       p.sim.maxOrder = 5
     
       // simulate model
-      println "simulate model"
+      //println "simulate model"
       t_sim = timer
       m = p.sim.eval (0, 50, 50);
       t_sim = timer - t_sim
