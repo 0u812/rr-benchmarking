@@ -5,7 +5,7 @@
       <compartment sboTerm="SBO:0000410" id="default_compartment"/>
     </listOfCompartments>
     <listOfSpecies>
-      <species id="A" compartment="default_compartment" initialConcentration="100"/>
+      <species id="A" compartment="default_compartment" initialConcentration="100000"/>
       <species id="B" compartment="default_compartment" initialConcentration="0"/>
       <species id="C" compartment="default_compartment" initialConcentration="0"/>
       <species id="D" compartment="default_compartment" initialConcentration="0"/>

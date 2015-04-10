@@ -15,7 +15,7 @@ model stoch()
   D -> E; D
   E -> A; E
   
-  A = 100
+  A = 100000
   B = 0
   C = 0
   D = 0
