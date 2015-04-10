@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created by libAntimony version v2.6.1 on 2015-04-10 12:45 with libSBML version 5.11.1. -->
+<!-- Created by libAntimony version v2.6.1 on 2015-04-10 13:34 with libSBML version 5.11.1. -->
 <sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
   <model id="stoch" name="stoch">
     <listOfCompartments>
@@ -7,11 +7,18 @@
     </listOfCompartments>
     <listOfSpecies>
       <species id="A" compartment="default_compartment" initialConcentration="100000" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="B" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="C" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="D" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="E" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="B" compartment="default_compartment" initialConcentration="1000" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="C" compartment="default_compartment" initialConcentration="1000" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="D" compartment="default_compartment" initialConcentration="1000" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="E" compartment="default_compartment" initialConcentration="100000" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
     </listOfSpecies>
+    <listOfParameters>
+      <parameter id="k1" value="0.2" constant="true"/>
+      <parameter id="k2" value="0.05" constant="true"/>
+      <parameter id="k3" value="0.1" constant="true"/>
+      <parameter id="k4" value="0.01" constant="true"/>
+      <parameter id="k5" value="0.05" constant="true"/>
+    </listOfParameters>
     <listOfReactions>
       <reaction id="_J0" reversible="true" fast="false">
         <listOfReactants>
@@ -22,7 +29,7 @@
         </listOfProducts>
         <kineticLaw>
           <math xmlns="http://www.w3.org/1998/Math/MathML">
-            <ci> A </ci>
+            <ci> k1 </ci>
           </math>
         </kineticLaw>
       </reaction>
@@ -35,7 +42,7 @@
         </listOfProducts>
         <kineticLaw>
           <math xmlns="http://www.w3.org/1998/Math/MathML">
-            <ci> B </ci>
+            <ci> k2 </ci>
           </math>
         </kineticLaw>
       </reaction>
@@ -48,7 +55,7 @@
         </listOfProducts>
         <kineticLaw>
           <math xmlns="http://www.w3.org/1998/Math/MathML">
-            <ci> C </ci>
+            <ci> k3 </ci>
           </math>
         </kineticLaw>
       </reaction>
@@ -57,11 +64,11 @@
           <speciesReference species="D" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
-          <speciesReference species="E" stoichiometry="1" constant="true"/>
+          <speciesReference species="C" stoichiometry="1" constant="true"/>
         </listOfProducts>
         <kineticLaw>
           <math xmlns="http://www.w3.org/1998/Math/MathML">
-            <ci> D </ci>
+            <ci> k4 </ci>
           </math>
         </kineticLaw>
       </reaction>
@@ -70,11 +77,11 @@
           <speciesReference species="E" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
-          <speciesReference species="A" stoichiometry="1" constant="true"/>
+          <speciesReference species="C" stoichiometry="1" constant="true"/>
         </listOfProducts>
         <kineticLaw>
           <math xmlns="http://www.w3.org/1998/Math/MathML">
-            <ci> E </ci>
+            <ci> k5 </ci>
           </math>
         </kineticLaw>
       </reaction>

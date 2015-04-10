@@ -9,17 +9,23 @@ import antimony
 ant = '''
 model stoch()
   species A,B,C,D,E
-  A -> B; A
-  B -> C; B
-  C -> D; C
-  D -> E; D
-  E -> A; E
+  A -> B; k1
+  B -> C; k2
+  C -> D; k3
+  D -> C; k4
+  E -> C; k5
   
   A = 100000
-  B = 0
-  C = 0
-  D = 0
-  E = 0
+  B = 1000
+  C = 1000
+  D = 1000
+  E = 100000
+  
+  k1 = 0.2
+  k2 = 0.05
+  k3 = 0.1
+  k4 = 0.01
+  k5 = 0.05
 end
 '''
 
