@@ -6,11 +6,18 @@
     </listOfCompartments>
     <listOfSpecies>
       <species id="A" compartment="default_compartment" initialConcentration="100000"/>
-      <species id="B" compartment="default_compartment" initialConcentration="0"/>
-      <species id="C" compartment="default_compartment" initialConcentration="0"/>
-      <species id="D" compartment="default_compartment" initialConcentration="0"/>
-      <species id="E" compartment="default_compartment" initialConcentration="0"/>
+      <species id="B" compartment="default_compartment" initialConcentration="1000"/>
+      <species id="C" compartment="default_compartment" initialConcentration="1000"/>
+      <species id="D" compartment="default_compartment" initialConcentration="1000"/>
+      <species id="E" compartment="default_compartment" initialConcentration="100000"/>
     </listOfSpecies>
+    <listOfParameters>
+      <parameter id="k1" value="0.2"/>
+      <parameter id="k2" value="0.05"/>
+      <parameter id="k3" value="0.1"/>
+      <parameter id="k4" value="0.01"/>
+      <parameter id="k5" value="0.05"/>
+    </listOfParameters>
     <listOfReactions>
       <reaction id="_J0">
         <listOfReactants>
@@ -21,7 +28,7 @@
         </listOfProducts>
         <kineticLaw>
           <math xmlns="http://www.w3.org/1998/Math/MathML">
-            <ci> A </ci>
+            <ci> k1 </ci>
           </math>
         </kineticLaw>
       </reaction>
@@ -34,7 +41,7 @@
         </listOfProducts>
         <kineticLaw>
           <math xmlns="http://www.w3.org/1998/Math/MathML">
-            <ci> B </ci>
+            <ci> k2 </ci>
           </math>
         </kineticLaw>
       </reaction>
@@ -47,7 +54,7 @@
         </listOfProducts>
         <kineticLaw>
           <math xmlns="http://www.w3.org/1998/Math/MathML">
-            <ci> C </ci>
+            <ci> k3 </ci>
           </math>
         </kineticLaw>
       </reaction>
@@ -56,11 +63,11 @@
           <speciesReference species="D"/>
         </listOfReactants>
         <listOfProducts>
-          <speciesReference species="E"/>
+          <speciesReference species="C"/>
         </listOfProducts>
         <kineticLaw>
           <math xmlns="http://www.w3.org/1998/Math/MathML">
-            <ci> D </ci>
+            <ci> k4 </ci>
           </math>
         </kineticLaw>
       </reaction>
@@ -69,11 +76,11 @@
           <speciesReference species="E"/>
         </listOfReactants>
         <listOfProducts>
-          <speciesReference species="A"/>
+          <speciesReference species="C"/>
         </listOfProducts>
         <kineticLaw>
           <math xmlns="http://www.w3.org/1998/Math/MathML">
-            <ci> E </ci>
+            <ci> k5 </ci>
           </math>
         </kineticLaw>
       </reaction>
