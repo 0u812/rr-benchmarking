@@ -1,0 +1,53 @@
+// Benchmark names and paths (rel to directory this script resides in)
+names = [ "stoch" ]
+
+paths = ["stoch\\stoch_l2v4.xml" ]
+
+println sys.version
+
+// Benchmark three trials
+for trial = 1 to 3 do
+begin
+  println "Trial ", trial
+  println "Name,", "Load_time,", "Run_time,", "Total_time"
+  for n = 1 to names.count do
+  begin            
+    name = names[n]
+    path = paths[n]
+    //println name, ": ", path
+    
+    bad_model = false
+    if name == "jean_marie" then
+      bad_model = true
+    if name == "jana_wolf" then
+      bad_model = true
+    if name == "biomod09" then
+      bad_model = true
+    if name == "biomod22" then
+      bad_model = true
+    
+    if bad_model == false then
+    begin  
+      // import SBML model
+      //println "load model ", path
+      t_load = timer 
+      p = network(path)
+      t_load = timer - t_load
+      
+      // set tolerances
+      p.sim.rtol = 0.0001
+      p.sim.atol = 1.000000E-007 
+      p.sim.maxOrder = 5
+    
+      // simulate model
+      //println "simulate model"
+      t_sim = timer
+      m = gillespie (p, 10000, [<p.Time>, <p.A>, <p.B>, <p.C>, <p.D>, <p.E>]);
+      t_sim = timer - t_sim
+    
+      t_total = t_load + t_sim
+    
+      println name, ",", t_load/1000, ",", t_sim/1000, ",", t_total/1000
+    end 
+  end
+end
