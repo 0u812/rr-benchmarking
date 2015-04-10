@@ -42,7 +42,7 @@ begin
       // simulate model
       //println "simulate model"
       t_sim = timer
-      m = gillespie (p, 10000, [<p.Time>, <p.A>, <p.B>, <p.C>, <p.D>, <p.E>]);
+      m = gillespie (p, 10, [<p.Time>, <p.A>, <p.B>, <p.C>, <p.D>, <p.E>]);
       t_sim = timer - t_sim
     
       t_total = t_load + t_sim

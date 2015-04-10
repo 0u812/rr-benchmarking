@@ -1,0 +1,9 @@
+Trial 1 
+Name,Load_time,Run_time,Total_time 
+stoch,    0.016,    7.813,    7.829 
+Trial 2 
+Name,Load_time,Run_time,Total_time 
+stoch,        0,    7.766,    7.766 
+Trial 3 
+Name,Load_time,Run_time,Total_time 
+stoch,        0,     7.75,     7.75
