@@ -26,5 +26,5 @@ end
 antimony.loadAntimonyString(ant)
 sbmlstr = antimony.getSBMLString(antimony.getMainModuleName())
 #print(sbmlstr)
-with open('stoch_l3.sbml', 'w') as f:
+with open('stoch_l3.xml', 'w') as f:
     f.write(sbmlstr)
