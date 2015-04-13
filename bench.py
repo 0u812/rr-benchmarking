@@ -11,8 +11,11 @@ import time
 import csv
 from sys import stderr, stdout
 
-Config.setValue(Config.SIMULATEOPTIONS_ABSOLUTE, 1.000000e-007)
-Config.setValue(Config.SIMULATEOPTIONS_RELATIVE, 0.0001)
+absolute_tol_default = 1.000000e-007
+rel_tol_default = 0.0001
+
+Config.setValue(Config.SIMULATEOPTIONS_ABSOLUTE, absolute_tol_default)
+Config.setValue(Config.SIMULATEOPTIONS_RELATIVE, rel_tol_default)
 
 tests = [ \
   ('jean_marie', "./jean_marie/Jean_Marie_AMPA16_RobHow_v6.xml"),
@@ -43,9 +46,23 @@ csvwriter = csv.writer(stdout, delimiter=',', quotechar='"', quoting=csv.QUOTE_M
 def timeit(name, path):
   print('Model: {}'.format(name), file=stderr)
   startTime = time.time()
+
+  # Load the model
   r=RoadRunner(path)
+
+  # Determine concentration to amount conversion factor
+  print('conc {}'.format(r.model.getFloatingSpeciesConcentrations()))
+  print('amt {}'.format(r.model.getFloatingSpeciesAmounts()))
+  conc_amt_factor = 1.
+  for conc,amt in zip(r.model.getFloatingSpeciesConcentrations(),
+                      r.model.getFloatingSpeciesAmounts()):
+    if abs(conc) > 1e-6 and abs(amt) > 1e-6:
+      conc_amt_factor = float(amt)/float(conc)
+      break
+  print('  Converting to amounts with factor {}'.format(conc_amt_factor), file=stderr)
+
   loadTime = time.time()
-  m=r.simulate(start,end,steps)
+  m=r.simulate(start, end, steps, absolute=absolute_tol_default*conc_amt_factor, relative=rel_tol_default*conc_amt_factor)
   endTime = time.time()
 
   csvwriter.writerow([name, loadTime-startTime, endTime-loadTime, endTime-startTime])
