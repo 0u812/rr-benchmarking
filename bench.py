@@ -51,8 +51,8 @@ def timeit(name, path):
   r=RoadRunner(path)
 
   # Determine concentration to amount conversion factor
-  print('conc {}'.format(r.model.getFloatingSpeciesConcentrations()))
-  print('amt {}'.format(r.model.getFloatingSpeciesAmounts()))
+  #print('conc {}'.format(r.model.getFloatingSpeciesConcentrations()), file=stderr)
+  #print('amt {}'.format(r.model.getFloatingSpeciesAmounts()), file=stderr)
   conc_amt_factor = 1.
   for conc,amt in zip(r.model.getFloatingSpeciesConcentrations(),
                       r.model.getFloatingSpeciesAmounts()):
