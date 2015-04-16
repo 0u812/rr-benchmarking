@@ -62,7 +62,7 @@ class Benchmark:
 
 def timeit(bench, trial, name, path):
   #print('Trial {}'.format(trial+1), file=stderr)
-  #print('Model: {}'.format(name), file=stderr)
+  print('Model: {}'.format(name), file=stderr)
   startTime = time.time()
 
   # Load the model
@@ -83,6 +83,8 @@ def timeit(bench, trial, name, path):
   #m=r.simulate(start, end, steps, absolute=absolute_tol_default*conc_amt_factor, relative=rel_tol_default*conc_amt_factor)
   m=r.simulate(start, end, steps)
   endTime = time.time()
+  
+  print('done simulating', file=stderr)
 
   bench.add_result(trial, [name, loadTime-startTime, endTime-loadTime, endTime-startTime])
 
