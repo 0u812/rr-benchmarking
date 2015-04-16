@@ -41,10 +41,28 @@ start = 0;
 end = 50;
 steps = 50;
 
-csvwriter = csv.writer(stdout, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+class Benchmark:
+  def __enter__(self):
+    self.trials = {}
+    return self
 
-def timeit(name, path):
-  print('Model: {}'.format(name), file=stderr)
+  def __exit__(self, exception_type, exception_value, traceback):
+    csvwriter = csv.writer(stdout, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+
+    for k in sorted(self.trials.keys()):
+      csvwriter.writerow(['Trial {}'.format(n+1)])
+      csvwriter.writerow(['Name', 'Load_time', 'Run_time', 'Total_time'])
+      for r in self.trials[k]:
+        csvwriter.writerow(r)
+
+  def add_result(self, trial, row):
+    self.trials.setdefault(trial, [])
+    self.trials[trial].append(row)
+
+
+def timeit(bench, trial, name, path):
+  #print('Trial {}'.format(trial+1), file=stderr)
+  #print('Model: {}'.format(name), file=stderr)
   startTime = time.time()
 
   # Load the model
@@ -65,13 +83,11 @@ def timeit(name, path):
   m=r.simulate(start, end, steps, absolute=absolute_tol_default*conc_amt_factor, relative=rel_tol_default*conc_amt_factor)
   endTime = time.time()
 
-  csvwriter.writerow([name, loadTime-startTime, endTime-loadTime, endTime-startTime])
+  bench.add_result(trial, [name, loadTime-startTime, endTime-loadTime, endTime-startTime])
 
-
-for n in range(3):
-  print('Trial {}'.format(n+1), file=stderr)
-  csvwriter.writerow(['Trial {}'.format(n+1)])
-  csvwriter.writerow(['Name', 'Load_time', 'Run_time', 'Total_time'])
+with Benchmark() as b:
   for t in tests:
-      timeit(*t)
+    print('Test {}'.format(t[0]), file=stderr)
+    for n in range(3):
+      timeit(b, n, *t)
 
