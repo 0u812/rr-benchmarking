@@ -50,7 +50,7 @@ class Benchmark:
     csvwriter = csv.writer(stdout, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
     for k in sorted(self.trials.keys()):
-      csvwriter.writerow(['Trial {}'.format(n+1)])
+      csvwriter.writerow(['Trial {}'.format(k+1)])
       csvwriter.writerow(['Name', 'Load_time', 'Run_time', 'Total_time'])
       for r in self.trials[k]:
         csvwriter.writerow(r)
@@ -80,7 +80,8 @@ def timeit(bench, trial, name, path):
   print('  Converting to amounts with factor {}'.format(conc_amt_factor), file=stderr)
 
   loadTime = time.time()
-  m=r.simulate(start, end, steps, absolute=absolute_tol_default*conc_amt_factor, relative=rel_tol_default*conc_amt_factor)
+  #m=r.simulate(start, end, steps, absolute=absolute_tol_default*conc_amt_factor, relative=rel_tol_default*conc_amt_factor)
+  m=r.simulate(start, end, steps)
   endTime = time.time()
 
   bench.add_result(trial, [name, loadTime-startTime, endTime-loadTime, endTime-startTime])
