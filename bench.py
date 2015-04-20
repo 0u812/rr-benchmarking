@@ -74,6 +74,7 @@ def timeit(name, path):
   csvwriter.writerow([name, loadTime-startTime, endTime-loadTime, endTime-startTime])
 
 print(getVersionStr(), file=stderr)
+csvwriter.writerow([getVersionStr()])
 
 for n in range(3):
   print('Trial {}'.format(n+1), file=stderr)
