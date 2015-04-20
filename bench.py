@@ -11,6 +11,8 @@ import time
 import csv
 from sys import stderr, stdout
 
+convert_tol = False
+
 absolute_tol_default = 1.000000e-007
 rel_tol_default = 0.0001
 
@@ -53,16 +55,20 @@ def timeit(name, path):
   # Determine concentration to amount conversion factor
   #print('conc {}'.format(r.model.getFloatingSpeciesConcentrations()), file=stderr)
   #print('amt {}'.format(r.model.getFloatingSpeciesAmounts()), file=stderr)
-  conc_amt_factor = 1.
-  for conc,amt in zip(r.model.getFloatingSpeciesConcentrations(),
-                      r.model.getFloatingSpeciesAmounts()):
-    if abs(conc) > 1e-6 and abs(amt) > 1e-6:
-      conc_amt_factor = float(amt)/float(conc)
-      break
-  print('  Converting to amounts with factor {}'.format(conc_amt_factor), file=stderr)
+  if convert_tol:
+    conc_amt_factor = 1.
+    for conc,amt in zip(r.model.getFloatingSpeciesConcentrations(),
+                        r.model.getFloatingSpeciesAmounts()):
+      if abs(conc) > 1e-6 and abs(amt) > 1e-6:
+        conc_amt_factor = float(amt)/float(conc)
+        break
+    print('  Converting to amounts with factor {}'.format(conc_amt_factor), file=stderr)
 
   loadTime = time.time()
-  m=r.simulate(start, end, steps, absolute=absolute_tol_default*conc_amt_factor, relative=rel_tol_default*conc_amt_factor)
+  if convert_tol:
+    m=r.simulate(start, end, steps, absolute=absolute_tol_default*conc_amt_factor, relative=rel_tol_default*conc_amt_factor)
+  else:
+    m=r.simulate(start, end, steps)
   endTime = time.time()
 
   csvwriter.writerow([name, loadTime-startTime, endTime-loadTime, endTime-startTime])
