@@ -37,7 +37,7 @@ for n in range(3):
     csvwriter.writerow([name, endTime-startTime])
 
 # set True for figure
-if False:
+if True:
     import pylab as p
     p.plot(m['time'], m['[PP__gal]'], '-b')    
     p.plot(m['time'], m['[PV__gal]'], '-k')    
