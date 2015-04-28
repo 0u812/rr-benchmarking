@@ -2,6 +2,7 @@
 Simulation wrapper for COPASI. 
 The latest copasi bindings were installed.
 
+python-copasi
 
 Created on Tue Apr 28 16:35:37 2015
 @author: mkoenig

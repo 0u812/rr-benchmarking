@@ -3,7 +3,7 @@
 Run SBML simulation with copasi.
 
 SBML Load time: 241.893377, 239.276337, 216.685368, 214.499586105
-Simulation time: 514.35285902, 456.029584885
+Simulation time: 514.35285902, 456.029584885, 493.35529088974
 
 '''
 import copasi_tools
@@ -29,7 +29,7 @@ for n in range(N_benchmark):
     tsteps = 1000
     
     res = copasi_tools.simulate(filename=sbml_file, t0=tstart, duration=(tend-tstart), steps=tsteps, 
-                   absTol=absTol, relTol=relTol, write_report=True)
+                   absTol=absTol, relTol=relTol, write_report=False)
     startTime = res["startTime"]    
     endTime = res["endTime"]
     
