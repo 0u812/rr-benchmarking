@@ -26,6 +26,7 @@ tests = [ \
   ('biomod14', "./biomod14/BIOMD0000000014.xml"),
   ('biomod22', "./biomod22/BIOMD0000000022.xml"),
   ('biomod33', "./biomod33/BIOMD0000000033.xml"),
+  ('liver',    "./koenig_liver/Galactose_v107_Nc20_galchallenge_noevents.xml"),
   ('00001',   "./00001/00001-sbml-l2v4.xml"),
   ('00002',   "./00002/00002-sbml-l2v4.xml"),
   ('00050',  "./00050/00050-sbml-l2v4.xml"),
