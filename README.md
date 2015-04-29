@@ -10,6 +10,8 @@
 * `jean_marie.py`: Runs just the Jean-Marie model in RoadRunner
 * `testjar.py`: Andy's original Jarnac benchmark, relies on CPU usage polling
 
+## Benchmarking Procedure
+
 The bench.py script is a modified version of Andy's code
 (changes include additional models and csv output),
 and should be run as follows:
@@ -17,7 +19,7 @@ and should be run as follows:
 python ./bench.py >../results.csv
 ```
 
-*ALL* models were run with the same tolerance parameters, which
+As both RoadRunner and Jarnac use species amounts (as opposed to concentrations) internally, *ALL* models were run with the same tolerance parameters, which
 are set in bench.py:
 ```
 absolute: 1.000000e-007
