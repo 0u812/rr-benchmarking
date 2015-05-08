@@ -1,8 +1,0 @@
-start: 0
-duration: 50
-steps: 500
-variables: X50, Y50
-absolute: 1.000000e-007
-relative: 0.0001
-amount: X50, Y50
-concentration:
