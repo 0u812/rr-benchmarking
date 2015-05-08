@@ -1,8 +1,9 @@
 // Benchmark names and paths (rel to directory this script resides in)
-names = [ "jana_wolf", 
-          "biomod14", 
-          "biomod33", 
-          "00001", 
+
+names = [ "jana_wolf", //A glycolytic model featuring complex dynamics with 15 species, 11 reactions, and 30 parameters with complex rate laws
+          "biomod14", // A large, mass-action model of a 3-stage mitogen-activated protein kinase (MAPK). Contains 86 species and 300 reactions
+          "biomod33", // A model which makes heavy use of Michaelis-Menten kinetics. Contains 32 species and 26 reactions
+          "00001", // A series of Brusselator models, each containing $N$ copies of a single Brusselator
           "00002", 
           "00050", 
           "00100", 
@@ -31,40 +32,38 @@ paths = ["jana_wolf\\Jana_WolfGlycolysis.xml",
          "00450\\00450-sbml-l2v4.xml", 
          "00500\\00500-sbml-l2v4.xml"]
 
+// Get version info
 println sys.version
 
-// Benchmark three trials
+// Run three trials
 for trial = 1 to 3 do
 begin
   println "Trial ", trial
   println "Name,", "Load_time,", "Run_time,", "Total_time"
   for n = 1 to names.count do
   begin            
+    // Get names/paths
     name = names[n]
     path = paths[n]
     
-    bad_model = false
+    // import SBML model
+    t_load = timer 
+    p = network(path)
+    t_load = timer - t_load
     
-    if bad_model == false then
-    begin  
-      // import SBML model
-      t_load = timer 
-      p = network(path)
-      t_load = timer - t_load
-      
-      // set tolerances
-      p.sim.rtol = 0.0001
-      p.sim.atol = 1.000000E-007 
-      p.sim.maxOrder = 5
+    // set tolerances
+    p.sim.rtol = 0.0001
+    p.sim.atol = 1.000000E-007 
+    p.sim.maxOrder = 5
+  
+    // simulate model
+    t_sim = timer
+    m = p.sim.eval (0, 50, 50);
+    t_sim = timer - t_sim
+  
+    t_total = t_load + t_sim
     
-      // simulate model
-      t_sim = timer
-      m = p.sim.eval (0, 50, 50);
-      t_sim = timer - t_sim
-    
-      t_total = t_load + t_sim
-    
-      println name, ",", t_load/1000, ",", t_sim/1000, ",", t_total/1000
-    end 
+    // print timing info
+    println name, ",", t_load/1000, ",", t_sim/1000, ",", t_total/1000
   end
 end
