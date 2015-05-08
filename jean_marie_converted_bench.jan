@@ -1,6 +1,11 @@
 // SBML to Jarnac Translator
 // Dated: 4/21/2015 12:44:44 PM
 
+// Jarnac benchmarking script, Apr 2015
+// Authors: J Kyle Medley
+// Language: Jarnac 3.33b
+// Usage: Open in Jarnac IDE and run for three trials
+
 // This file is the Jean-Marie AMPA receptor converted to Jarnac's own format
 
 p = defn AMPA16_v3

@@ -1,3 +1,8 @@
+// Jarnac benchmarking script, Apr 2015
+// Authors: J Kyle Medley
+// Language: Jarnac 3.33b
+// Usage: Open in Jarnac IDE and run
+
 // Benchmark names and paths (rel to directory this script resides in)
 
 names = [ "jana_wolf", //A glycolytic model featuring complex dynamics with 15 species, 11 reactions, and 30 parameters with complex rate laws
