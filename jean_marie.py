@@ -6,7 +6,7 @@ Created on Tue Apr 21 12:47:12 2015
 """
 
 import roadrunner as rr
-import tellurium as te
+#import tellurium as te
 import csv
 import time
 from sys import stderr, stdout
@@ -16,7 +16,7 @@ csvwriter = csv.writer(stdout, delimiter=',', quotechar='"', quoting=csv.QUOTE_M
 csvwriter.writerow([rr.getVersionStr()])
 csvwriter.writerow(['Name', 'Run_time'])
 
-r = rr.RoadRunner(r'C:\Users\phantom\Documents\devel\src\rr-benchmarking\jean_marie\Jean_Marie_AMPA16_RobHow_v6.xml')
+r = rr.RoadRunner(r'.\jean_marie\Jean_Marie_AMPA16_RobHow_v6.xml')
 
 #print(r.rv())
 
