@@ -1,6 +1,8 @@
 // SBML to Jarnac Translator
 // Dated: 4/21/2015 12:44:44 PM
 
+// This file is the Jean-Marie AMPA receptor converted to Jarnac's own format
+
 p = defn AMPA16_v3
       vol default;
       var R0, R1, R2, R3, R4, D0;
@@ -93,9 +95,14 @@ p.kdiss_re16_Init = 0.3;
 p.kass_re11_Init = 3.3E-006;
 p.kass_re12_Init = 0.42;
 
+// END OF MODEL
+  
+// set tolerances
+p.sim.rtol = 0.0001
+p.sim.atol = 1.000000E-007 
+p.sim.maxOrder = 5
 
 t1 = timer;
 m = p.sim.eval (0, 5000000, 10000);
 println (timer - t1)/1000;
-//println m;
 
