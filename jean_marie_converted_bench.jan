@@ -103,6 +103,6 @@ p.sim.atol = 1.000000E-007
 p.sim.maxOrder = 5
 
 t1 = timer;
-m = p.sim.eval (0, 5000000, 10000);
+m = p.sim.eval (0, 50, 50);
 println (timer - t1)/1000;
 
