@@ -3,7 +3,7 @@
 # Roadrunner benchmarking script, Apr 2015
 # Authors: Andy Somogyi, J Kyle Medley
 # Language: Python 2.7.9
-# Usage: cd <this_dir> && python bench.py >../results.csv
+# Usage: cd <this_dir> && python bench.py >rr-ode-results.csv
 
 from __future__ import print_function
 from roadrunner import *
@@ -22,7 +22,6 @@ Config.setValue(Config.SIMULATEOPTIONS_RELATIVE, rel_tol_default)
 tests = [ \
   ('jean_marie', "./jean_marie/Jean_Marie_AMPA16_RobHow_v6.xml"),
   ('jana_wolf', "./jana_wolf/Jana_WolfGlycolysis.xml"),
-  # ('biomod09', "./biomod09/BIOMD0000000009.xml"), # crashes solver - JKM
   ('biomod14', "./biomod14/BIOMD0000000014.xml"),
   ('biomod22', "./biomod22/BIOMD0000000022.xml"),
   ('biomod33', "./biomod33/BIOMD0000000033.xml"),
@@ -53,23 +52,8 @@ def timeit(name, path):
   # Load the model
   r=RoadRunner(path)
 
-  # Determine concentration to amount conversion factor
-  #print('conc {}'.format(r.model.getFloatingSpeciesConcentrations()), file=stderr)
-  #print('amt {}'.format(r.model.getFloatingSpeciesAmounts()), file=stderr)
-  if convert_tol:
-    conc_amt_factor = 1.
-    for conc,amt in zip(r.model.getFloatingSpeciesConcentrations(),
-                        r.model.getFloatingSpeciesAmounts()):
-      if abs(conc) > 1e-6 and abs(amt) > 1e-6:
-        conc_amt_factor = float(amt)/float(conc)
-        break
-    print('  Converting to amounts with factor {}'.format(conc_amt_factor), file=stderr)
-
   loadTime = time.time()
-  if convert_tol:
-    m=r.simulate(start, end, steps, absolute=absolute_tol_default*conc_amt_factor, relative=rel_tol_default*conc_amt_factor)
-  else:
-    m=r.simulate(start, end, steps)
+  m=r.simulate(start, end, steps)
   endTime = time.time()
 
   csvwriter.writerow([name, loadTime-startTime, endTime-loadTime, endTime-startTime])
