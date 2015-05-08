@@ -25,4 +25,7 @@ python ./rr_bench_stoch.py >rr-stoch-results.csv
 ## Jarnac
 
 To run the Jarnac ODE benchmark, open the file `jarnac_bench_ode.jan` in the Jarnac
+IDE and click the "Run" button. The results will be displayed in the interactive console.
+
+To run the Jarnac stochastic/Gillespie benchmark, open the file `jarnac_bench_stoch.jan` in the Jarnac
 IDE and click the "Run" button.
