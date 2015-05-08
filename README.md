@@ -10,6 +10,8 @@ git clone -b submission https://github.com/0u812/rr-benchmarking.git
 cd rr-benchmarking
 ```
 
+## libRoadRunner
+
 Run the roadrunner ODE benchmark and save the results to rr-ode-results.csv:
 ```
 python ./rr_bench_ode.py >rr-ode-results.csv
@@ -19,3 +21,8 @@ Run the roadrunner stochastic benchmark and save the results to rr-ode-results.c
 ```
 python ./rr_bench_stoch.py >rr-stoch-results.csv
 ```
+
+## Jarnac
+
+To run the Jarnac ODE benchmark, open the file `jarnac_bench_ode.jan` in the Jarnac
+IDE and click the "Run" button.
