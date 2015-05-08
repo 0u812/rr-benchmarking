@@ -1,5 +1,5 @@
 // Benchmark names and paths (rel to directory this script resides in)
-names = [ "jana_wolf_fixed2", 
+names = [ "jana_wolf", 
           "biomod14", 
           "biomod33", 
           "00001", 
@@ -15,7 +15,7 @@ names = [ "jana_wolf_fixed2",
           "00450", 
           "00500" ]
 
-paths = ["jana_wolf\\Jana_WolfGlycolysis_fixed2.xml", 
+paths = ["jana_wolf\\Jana_WolfGlycolysis.xml", 
          "biomod14\\BIOMD0000000014.xml", 
          "biomod33\\BIOMD0000000033.xml", 
          "00001\\00001-sbml-l2v4.xml", 
