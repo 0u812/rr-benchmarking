@@ -12,10 +12,10 @@ cd rr-benchmarking
 
 Run the roadrunner ODE benchmark and save the results to rr-ode-results.csv:
 ```
-python ./bench.py >rr-ode-results.csv
+python ./rr_bench_ode.py >rr-ode-results.csv
 ```
 
 Run the roadrunner stochastic benchmark and save the results to rr-ode-results.csv:
 ```
-python ./bench.py >rr-stoch-results.csv
+python ./rr_bench_stoch.py >rr-stoch-results.csv
 ```
