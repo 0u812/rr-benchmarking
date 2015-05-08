@@ -11,9 +11,6 @@ import time
 import csv
 from sys import stderr, stdout
 
-Config.setValue(Config.SIMULATEOPTIONS_ABSOLUTE, 1.000000e-007)
-Config.setValue(Config.SIMULATEOPTIONS_RELATIVE, 0.0001)
-
 tests = [ \
   ('stoch', "./stoch/stoch_l2v4.xml")]
 
