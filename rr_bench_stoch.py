@@ -15,8 +15,8 @@ tests = [ \
   ('stoch', "./stoch/stoch_l2v4.xml")]
 
 start = 0;
-end = 50;
-steps = 10000;
+end = 10;
+steps = 10;
 
 csvwriter = csv.writer(stdout, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
