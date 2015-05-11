@@ -11,8 +11,7 @@ import time
 import csv
 from sys import stderr, stdout
 
-convert_tol = False
-
+# Set tolerance parameters (must match across simulators)
 absolute_tol_default = 1.000000e-007
 rel_tol_default = 0.0001
 
@@ -56,6 +55,7 @@ def timeit(name, path):
 
   csvwriter.writerow([name, loadTime-startTime, endTime-loadTime, endTime-startTime])
 
+# First row in output: Version info
 print(getVersionStr(), file=stderr)
 csvwriter.writerow([getVersionStr()])
 
